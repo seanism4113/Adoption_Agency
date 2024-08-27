@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block title %} Pets Homepage {% endblock %} {%
+block content %}
+<div class="container">
+	<div class="row justify-content-center mt-4 mb-4">
+		<div class="col-md-4 text-center">
+			<a href="/add" class="btn btn-info text-white btn-lg">Add a Pet</a>
+		</div>
+	</div>
+	<h2>Available Pets</h2>
+	<div class="row">
+		{% for pet in available_pets %}
+		<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+			<div class="card h-100 border-0">
+				<a href="/{{pet.id}}"
+					><img
+						src="{{pet.photo_url}}"
+						class="card-img-top"
+						alt="{{pet.species}}"
+				/></a>
+				<div class="card-body">
+					<p class="card-text text-secondary">
+						{{pet.name}}
+						<b class="text-info">is available!</b>
+					</p>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+		<h2>Unavailable Pets</h2>
+		<div class="row">
+			{% for pet in unavailable_pets %}
+			<div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+				<div class="card h-100 border-0">
+					<a href="/{{pet.id}}"
+						><img
+							src="{{pet.photo_url}}"
+							class="card-img-top"
+							alt="{{pet.species}}"
+					/></a>
+					<div class="card-body">
+						<p class="card-text text-secondary">
+							{{pet.name}}
+							<b>is not available.</b>
+						</p>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	{% endblock %}
+</div>
